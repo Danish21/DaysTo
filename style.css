@@ -1,0 +1,46 @@
+
+body{
+	background-color: black;
+	color: white;
+}
+#inputContainer{
+	margin: 0 auto 0 auto;
+	width: 700px;
+	height: 50px;
+	/*border: solid red;*/
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+select{
+	height: 30px;
+}
+
+#currentTimerWrapper{
+	width: 500px;
+	height: 100px;
+	margin: 0 auto 0 auto;
+	/*border: solid blue;*/
+	text-align: center;
+	font-size: 24px;
+	margin-bottom: 50px;
+	
+}
+
+#currentTimerWrapper h2{
+	color: grey;
+}
+
+#timerWrapper {
+	width: 800px;
+	height: 100px;
+	margin: 0 auto 0 auto;
+	/*border: solid blue;*/
+	text-align: center;
+	font-size: 24px;
+	
+}
+
+#timerWrapper h2{
+	color: grey;
+}
+

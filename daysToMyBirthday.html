@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html>
+	
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+
+	<script type="text/javascript">
+
+		var now = new Date();
+		var currMonth = now.getMonth() + 1; // returns the month from 0-11
+		var currDay = now.getDate(); 
+		var currHours = now.getHours();
+		var currMins = now.getMinutes();
+		var currSeconds = now.getSeconds();
+
+		function timeUpdater(){
+		 	now = new Date();
+		 	currMonth = now.getMonth() + 1; // returns the month from 0-11
+		 	currDay = now.getDate(); 
+		 	currHours = now.getHours();
+		 	currMins = now.getMinutes();
+		 	currSeconds = now.getSeconds();
+		}
+
+		function printCurrentTime(){
+			timeUpdater();
+			var currMonthText="";
+			var currDayText = ""+currDay;
+			var currHoursText = ""+currHours;
+			var currMinsText = ""+currMins;
+			var currSecondsText = ""+currSeconds;
+
+			if(currMonth==1){currMonthText="January"};
+			if(currMonth==2){currMonthText="February"};
+			if(currMonth==3){currMonthText="March"};
+			if(currMonth==4){currMonthText="April"};
+			if(currMonth==5){currMonthText="May"};
+			if(currMonth==6){currMonthText="June"};
+			if(currMonth==7){currMonthText="July"};
+			if(currMonth==8){currMonthText="August"};
+			if(currMonth==9){currMonthText="September"};
+			if(currMonth==10){currMonthText="October"};
+			if(currMonth==11){currMonthText="November"};
+			if(currMonth==12){currMonthText="December"};
+
+			if(Math.floor((currDay/10))==0){
+				currDayText= "0" + currDay;
+			}
+
+			if(Math.floor((currMins/10))==0){
+				currMinsText= "0" + currMins;
+			}
+			
+			if(Math.floor((currHours/10))==0){
+
+				currHoursText= "0" + currHours;
+			}
+
+			if(Math.floor((currSeconds/10))==0){
+				currSecondsText= "0" + currSeconds;
+			}
+
+
+
+
+			var currentTimer = document.getElementById("currentTimer").innerHTML= currMonthText + " " +currDayText + "   " + currHoursText +":"+ currMinsText + ":" + currSecondsText;
+		}
+
+
+		function PrintTimeToBirthDay(){
+
+			timeUpdater();
+
+			var yourBirthMonth= document.getElementById("monthScroll").value; 
+			var yourBirthDay = document.getElementById("dayScroll").value; 
+
+			
+			var monthsTo = yourBirthMonth - currMonth;
+			var daysTo = yourBirthDay - currDay; 
+			var hoursTo = 24 - currHours;
+			var minutesTo = 60 - currMins;
+			var secondsTo = 60 - currSeconds;
+
+			var daysInTheMonth= 31;
+
+			if(currMonth==2){ // if the month is february
+				daysInTheMonth = 28;
+			}
+
+			if(currMonth==4 || currMonth==6 || currMonth ==9 || currMonth==11){ // if the month is april, june, September, or november
+				daysInTheMonth=30;
+			}
+
+
+			if(monthsTo<0){ // if your bithday has passed this year
+				monthsTo= 12 - Math.abs(monthsTo);
+			}
+
+			else if(monthsTo==0){ // if your birthday is this month
+				if(yourBirthDay > currDay ){ // if it hasn't passed
+					monthsTo=11;
+					daysTo = yourBirthDay - currDay;
+				}
+				else if(yourBirthDay==currDay){ // if it is your birthday
+					monthTo= 11;
+					daysTo= daysInTheMonth;
+				}
+				else{ // your birthday passed
+					monthsTo =12; // your birthday is 11 months away and daysTo is negative so the minus 1 will adjust it
+				}
+			}
+
+			if(daysTo <0){
+				daysTo = Number(daysInTheMonth - currDay) + Number(yourBirthDay);
+				monthsTo = monthsTo - 1;
+			}
+			
+			daysTo = daysTo - 1;
+			
+			var timer = document.getElementById("timer").innerHTML= monthsTo + " months " +daysTo + " days " + hoursTo +" hours "+ minutesTo + " minutes " + secondsTo + " seconds ";
+
+		}
+
+		setInterval("printCurrentTime()", 1000);
+
+		function printTimer(){
+
+			setInterval("PrintTimeToBirthDay()", 1000);
+			
+		}
+
+
+
+		
+	</script>
+</head>
+
+
+<body>
+
+
+	<div id="inputContainer">
+		Select the date of your birthday: Month:<select name = "month" id="monthScroll">
+			 	<option value=1>January</option>
+			 	<option value=2>February</option>
+			 	<option value=3>March</option>
+			 	<option value=4>April</option>
+			 	<option value=5>May</option>
+			 	<option value=6>June</option>
+			 	<option value=7>July</option>
+			 	<option value=8>August</option>
+			 	<option value=9>September</option>
+			 	<option value=10>October</option>
+			 	<option value=11>November</option>
+			 	<option value=12>December</option>
+			</select>
+
+		Day: <select name = "day" id="dayScroll">
+			 	<option value=1>1</option>
+			 	<option value=2>2</option>
+			 	<option value=3>3</option>
+			 	<option value=4>4</option>
+			 	<option value=5>5</option>
+			 	<option value=6>6</option>
+			 	<option value=7>7</option>
+			 	<option value=8>8</option>
+			 	<option value=9>9</option>
+			 	<option value=10>10</option>
+			 	<option value=11>11</option>
+			 	<option value=12>12</option>
+			 	<option value=13>13</option>
+			 	<option value=14>14</option>
+			 	<option value=15>15</option>
+			 	<option value=16>16</option>
+			 	<option value=17>17</option>
+			 	<option value=18>18</option>
+			 	<option value=19>19</option>
+			 	<option value=20>20</option>
+			 	<option value=21>21</option>
+			 	<option value=22>22</option>
+			 	<option value=23>23</option>
+			 	<option value=24>24</option>
+			 	<option value=25>25</option>
+			 	<option value=26>26</option>
+			 	<option value=27>27</option>
+			 	<option value=28>28</option>
+			 	<option value=29>29</option>
+			 	<option value=30>30</option>
+			 	<option value=31>31</option>
+			</select>
+
+			<input id="submitButton" type="submit" value="Submit!" onClick="printTimer();"/>
+			</br>
+
+		</div>
+
+
+		<div id="currentTimerWrapper">
+			Current Date and Time:
+			<h2 id= "currentTimer"> </h2>
+			</br>
+		</div>
+
+		<div id="timerWrapper">
+			Time till your BirthDay:
+			<h2 id="timer"></h2>
+			</br>
+		</div>
+	
+
+<h2 id="valuesPicked"></h2>
+
+
+
+
+</body>
+
+
+
+</html>
